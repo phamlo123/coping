@@ -1,5 +1,4 @@
 from django.db import models
-from .user import CustomUser
 from .company import Company
 
 class Internship(models.Model):
@@ -9,7 +8,7 @@ class Internship(models.Model):
 
     CYCLE = [(SUMMER, "Summer"), (SPRING, "SPRING"), (FALL, "F")]
 
-    user = models.ForeignKey('auth.User', related_name="internships", on_delete=models.CASCADE)
+    owner = models.ForeignKey('auth.User', related_name="internships", on_delete=models.CASCADE)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     review = models.CharField(max_length=1000)
     pay = models.DecimalField(decimal_places=2, max_digits=8)

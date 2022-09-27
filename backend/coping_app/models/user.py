@@ -49,5 +49,4 @@ class CustomUser(AbstractBaseUser):
     def __str__(self) -> str:
         return f"id: {self.id} username: {self.username} college: {self.college}"
 
-
         

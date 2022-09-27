@@ -4,5 +4,5 @@ from .user import CustomUser
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    user = models.ForeignKey(CustomUser, models.SET_NULL, blank=True, null=True)
+    user = models.ForeignKey('auth.User', related_name="comments", on_delete=models.CASCADE)
     content = models.CharField(max_length=1000)
