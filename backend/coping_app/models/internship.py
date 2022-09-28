@@ -20,3 +20,4 @@ class Internship(models.Model):
     drug_test = models.BooleanField(default=False)
 
         
+    

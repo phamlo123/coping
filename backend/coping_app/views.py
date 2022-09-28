@@ -15,10 +15,7 @@ from rest_framework.response import Response
 from rest_framework import permissions
 
 
-class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    This viewset automatically provides `list` and `retrieve` actions.
-    """
+class UserViewSet(viewsets.ModelViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
 
@@ -41,16 +38,16 @@ class PostViewSet(viewsets.ModelViewSet):
     permission_classes=[permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
     def perform_create(self, serializer) -> None:
-        serializer.save(onwer=self.request.user)
+        serializer.save(owner=self.request.user)
 
 
-class CommentViewSet(viewsets.Mode):
+class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes=[permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
     def perform_create(self, serializer) -> None:
-        serializer.save(onwer=self.request.user)
+        serializer.save(owner=self.request.user)
 
 @api_view(['GET'])
 def api_root(request, format=None):
