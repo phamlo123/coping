@@ -1,7 +1,7 @@
 from django.urls import path
-from coping_app import views
+from coping import views
 from rest_framework.urlpatterns import format_suffix_patterns
-from coping_app.views import UserViewSet, InternshipViewSet, CompanyViewSet, PostViewSet, CommentViewSet
+from coping.views import UserViewSet, InternshipViewSet, CompanyViewSet, PostViewSet, CommentViewSet
 
 
 internship_list = InternshipViewSet.as_view({

@@ -1,10 +1,10 @@
-from coping_app.models.user import CustomUser
-from coping_app.models.internship import Internship
-from coping_app.models.company import Company
-from coping_app.models.post import Post
-from coping_app.models.comment import Comment
-from coping_app.serializers import UserSerializer, InternshipSerializer, CompanySerializer, PostSerializer, CommentSerializer
-from coping_app.permissions import IsOwnerOrReadOnly
+from coping.models.user import CustomUser
+from coping.models.internship import Internship
+from coping.models.company import Company
+from coping.models.post import Post
+from coping.models.comment import Comment
+from coping.serializers import UserSerializer, InternshipSerializer, CompanySerializer, PostSerializer, CommentSerializer
+from coping.permissions import IsOwnerOrReadOnly
 # Create your views here.
 from rest_framework import permissions
 from rest_framework.decorators import api_view

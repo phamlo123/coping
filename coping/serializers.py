@@ -1,11 +1,10 @@
 from dataclasses import Field
-import typing
 from rest_framework import serializers
-from coping_app.models.user import CustomUser
-from coping_app.models.company import Company
-from coping_app.models.internship import Internship
-from coping_app.models.post import Post
-from coping_app.models.comment import Comment
+from coping.models.user import CustomUser
+from coping.models.company import Company
+from coping.models.internship import Internship
+from coping.models.post import Post
+from coping.models.comment import Comment
 from typing import Optional
 
 class UserSerializer(serializers.ModelSerializer):
