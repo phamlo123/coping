@@ -17,10 +17,14 @@ internship_detail = InternshipViewSet.as_view({
 })
 
 user_list = UserViewSet.as_view({
-    'get': 'list'
+    'get': 'list',
+    'post': 'create'
 })
 user_detail = UserViewSet.as_view({
-    'get': 'retrieve'
+    'get': 'retrieve',
+    'put': 'update',
+    'patch': 'partial_update',
+    'delete': 'destroy'
 })
 
 company_list = CompanyViewSet.as_view({

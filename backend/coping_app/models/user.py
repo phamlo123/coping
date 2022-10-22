@@ -1,4 +1,3 @@
-from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 
@@ -40,8 +39,8 @@ class CustomUser(AbstractBaseUser):
         (OTHER, "OTHER")]
 
     username = models.CharField(max_length=200, unique=True)
-    year = models.CharField(max_length=2, choices=YEAR_IN_SCHOOL_CHOICES, default=FRESHMAN)
-    college = models.CharField(max_length=20, choices=COLLEGE_CHOICES, default=OTHER)
+    year = models.CharField(max_length=200, default=FRESHMAN)
+    college = models.CharField(max_length=200, default=OTHER)
     #TODO: validate this field by writing a validator
     number_coops_completed=models.IntegerField()
     linkedin = models.CharField(max_length=100, unique=True)

@@ -32,8 +32,18 @@ from coping_app import urls
 # router = routers.DefaultRouter()
 # router.register(r'users', UserViewSet)
 
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView
+)
+
 urlpatterns = [
     path('', include(urls)),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('coping_app/', include('coping_app.urls')),

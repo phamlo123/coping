@@ -15,7 +15,7 @@ class Internship(models.Model):
     title = models.CharField(max_length=100)
     #TODO: enforce min-max
     co_op_num = models.IntegerField()
-    cycle = models.CharField(max_length=2, choices=CYCLE, default=None)
+    cycle = models.CharField(max_length=2000)
     tasks = models.CharField(max_length=10000)
     drug_test = models.BooleanField(default=False)
 

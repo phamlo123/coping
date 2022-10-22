@@ -13,12 +13,26 @@ class UserSerializer(serializers.ModelSerializer):
     # posts = serializers.PrimaryKeyRelatedField(many=True, queryset=Post.objects.all())
     class Meta:
         model = CustomUser
-        fields = ['id', 'username', 'year', 'college', 'number_coops_completed', 'linkedin', 'internships']
+        extra_kwargs = {'password': {'write_only': True}}
+        fields = ['id', 'username', 'year', 'college', 'number_coops_completed', 'linkedin', 'password']
 
     def create(self, validated_data) -> CustomUser:
-        return CustomUser.create(**validated_data)
-    
-    def update(self, instance, validated_data) -> CustomUser:
+        user = super(UserSerializer, self).create(validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+        
+    def update(self, instance, validated_data) -> Optional[CustomUser]:
+        instance.review = validated_data.get("username", instance.username)
+        instance.pay = validated_data.get("year", instance.year)
+        instance.title = validated_data.get("college", instance.college)
+        instance.cycle = validated_data.get("number_coops_completed", instance.number_coops_completed)
+        instance.tasks = validated_data.get("linkedin", instance.linkedin)
+        instance.drug_test = validated_data.get("password", instance.password)
+        try:
+            instance.save()
+        except:
+            return
         return instance
 
 class CompanySerializer(serializers.ModelSerializer):
@@ -49,6 +63,7 @@ class InternshipSerializer(serializers.ModelSerializer):
         instance.cycle = validated_data.get("cycle", instance.cycle)
         instance.tasks = validated_data.get("tasks", instance.tasks)
         instance.drug_test = validated_data.get("drug_test", instance.drug_test)
+        instance.co_op_num = validated_data.get("co_op_num", instance.co_op_num)
         try:
             instance.save()
         except:

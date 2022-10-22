@@ -13,11 +13,13 @@ from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import permissions
+from rest_framework.permissions import AllowAny
 
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
+    permission_classes = (AllowAny,)
 
 class InternshipViewSet(viewsets.ModelViewSet):
     queryset = Internship.objects.all()
