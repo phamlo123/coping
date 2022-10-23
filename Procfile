@@ -1,2 +1,2 @@
-release: python manage.py migrate
-web: gunicorn backend.wsgi --log-file -
+web: gunicorn coping.wsgi:application --log-file - --log-level debug
+manage.py migrate
