@@ -21,7 +21,7 @@ import dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent 
-# django_heroku.settings(locals())
+# 
 
 
 # Quick-start development settings - unsuitable for production
@@ -41,7 +41,7 @@ CORS_ORIGIN_WHITELIST = [
 # Application definition
 
 INSTALLED_APPS = [
-    'coping',
+    'coping_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -90,7 +90,7 @@ JWT_AUTH = {
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
 }
 
-ROOT_URLCONF = 'coping.urls'
+ROOT_URLCONF = 'coping_app.urls'
 
 TEMPLATES = [
     {
@@ -114,7 +114,16 @@ TEMPLATES = [
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dbtest', 
+        'USER': 'postgres', 
+        'PASSWORD': '0909963566',
+        'HOST': '127.0.0.1', 
+        'PORT': '2147',
+    }
+}
 db_from_env = dj_database_url.config(conn_max_age=600)
 
 
@@ -166,9 +175,10 @@ CORS_ORIGIN_WHITELIST = (
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-dotenv_file = os.path.join(BASE_DIR, ".env")
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
+# dotenv_file = os.path.join(BASE_DIR, ".env")
+# if os.path.isfile(dotenv_file):
+#     dotenv.load_dotenv(dotenv_file)
 
 ALLOWED_HOSTS = ['*'] # Set to open for all access
 ALLOWED_HOSTS = ['coping.herokuapp.com', '127.0.0.1:8000', 'localhost']
+django_heroku.settings(locals())

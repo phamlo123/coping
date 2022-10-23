@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers, serializers, viewsets
 from django.contrib.auth.models import User
-from coping import urls
+from coping_app import urls
 # Serializers define the API representation.
 # class UserSerializer(serializers.HyperlinkedModelSerializer):
 #     class Meta:
