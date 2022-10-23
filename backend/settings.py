@@ -108,7 +108,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'coping_app.wsgi.application'
+# WSGI_APPLICATION = 'coping_app.wsgi.application'
 
 
 # Database

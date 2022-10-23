@@ -18,6 +18,8 @@ class InternshipList extends React.Component {
 
     render() {
         return(
+            <div>
+            Hello            
             <ul className="list-group">
                 {this.state.internships.map((internship, id) =>
                 <div key={id}>
@@ -29,7 +31,9 @@ class InternshipList extends React.Component {
                 </li>
                 </div>
                 )}
-            </ul>);
+            </ul>
+            </div>
+            );
     }
 }
 export default InternshipList;
