@@ -4,7 +4,7 @@ import Login from "./coping/login";
 import {BrowserRouter} from "react-router-dom";
 import {Routes, Route} from "react-router";
 import Signup from "./coping/signup";
-import Internships from "./coping/internships";
+import Coping from "./coping";
 
 import axios from 'axios';
 axios.defaults.xsrfCookieName = 'csrftoken'
@@ -18,7 +18,7 @@ function App() {
     <div className="Container">
       <h1>Hello</h1>
       <Routes>
-        <Route index element={<Internships/>}/>
+        <Route index element={<Coping/>}/>
         <Route path="/login"
                   element={<Login/>}/>
         <Route path="/signup"

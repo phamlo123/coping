@@ -1,39 +1,32 @@
-import React from 'react';
-import axios from "axios";
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import { findInternshipsThunk } from '../services/internships-thunk';
+import InternshipItem from './InternshipItem';
 
-class InternshipList extends React.Component {
-    state = {
-        internships: [],
-    };
 
-    async componentDidMount() {
-        let data;
+const InternshipList = () => {
+    const dispatch = useDispatch();
+    const {internships, loading} = useSelector(state => state.internshipsData)
+ 
 
-        let response = await axios.get("http://localhost:8000/internships/");
-        data = response.data;
-        this.setState({
-            internships: data,
-        }); 
-    }
-
-    render() {
-        return(
-            <div>
-            Hello            
-            <ul className="list-group">
-                {this.state.internships.map((internship, id) =>
-                <div key={id}>
-                <li className="list-group-item">
-                    <div>{internship.company}</div>
-                    <div>{internship.title}</div>
-                    <div>{internship.review}</div>
-                    <div>{internship.pay}</div>
-                </li>
-                </div>
-                )}
-            </ul>
-            </div>
-            );
-    }
+    useEffect(() => {
+      dispatch(findInternshipsThunk())
+    }, [])
+    
+    return(
+        <ul className="list-group">
+        {
+        loading &&
+        <li className="list-group-item">
+        Loading...
+        </li>
+        }
+    
+        {
+            internships.map((internship, index) => <InternshipItem key={Math.random()} internship={internship}/>)
+        }
+        </ul>
+    );
 }
+
 export default InternshipList;
