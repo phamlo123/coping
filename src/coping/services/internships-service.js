@@ -1,6 +1,6 @@
 import axios from 'axios';
-// const INTERNSHIPS_API = 'https://coping-backend.herokuapp.com/internships';
-const INTERNSHIPS_API = 'http://localhost:8000/internships/';
+const INTERNSHIPS_API = 'https://coping-backend.herokuapp.com/internships';
+// const INTERNSHIPS_API = 'http://localhost:8000/internships/';
 
 
 export const findInternships = async () => {
