@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import { findInternshipsThunk } from '../services/internships-thunk';
@@ -21,10 +22,20 @@ const InternshipList = () => {
         Loading...
         </li>
         }
-    
-        {
-            internships.map((internship, index) => <InternshipItem key={Math.random()} internship={internship}/>)
-        }
+        
+        {internships.map((internship, index) =>
+            <div key={index}>
+            <li className="list-group-item">
+                <div>{internship.owner}</div>
+                <div>{internship.company}</div>
+                <div>{internship.title}</div>
+                <div>{internship.review}</div>
+                <div>{internship.tasks}</div>
+                <div>{internship.pay}</div>
+            </li>
+        </div>
+        )}
+        
         </ul>
     );
 }
